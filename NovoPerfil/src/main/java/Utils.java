@@ -35,7 +35,7 @@ public class Utils {
 	public void criarPasta () { //cria uma pasta dentro do diretorio target
 		
 		try {
-			nomeEEnderecoPasta = "/home/samara/eclipse-workspace/BuscaBBC/target/Screenshots_"+data("dd_MM_yyyy")+"_"
+			nomeEEnderecoPasta = "/home/samara/eclipse-workspace/NovoPerfil/target/Screenshots_"+data("dd_MM_yyyy")+"_"
 		+horario();
 			File pasta = new File (nomeEEnderecoPasta);
 			pasta.mkdir();
@@ -51,13 +51,14 @@ public class Utils {
 		
 	}
 	
-	public void capturaScreenshot () { //captura screenshot da tela e joga dentro da pasta nova criada
+	public void capturaScreenshot (String nomeTela) { //captura screenshot da tela e joga dentro da pasta nova criada
 		
 		 try {
 	            
 			 	  Robot robot = new Robot();
 	            BufferedImage bi=robot.createScreenCapture(pegarDimensaoDaTela());
-	            ImageIO.write(bi, "jpg", new File(nomeEEnderecoPasta+"/Screencapture_"+horario()));
+	            String nomeImagemSalva =  nomeEEnderecoPasta+"/Screencapture_"+nomeTela+"_"+horario();
+	            ImageIO.write(bi, "jpg", new File(nomeImagemSalva));
 	            
 		 }catch (Exception e) {
 			 e.printStackTrace();
